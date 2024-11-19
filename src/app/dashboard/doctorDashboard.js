@@ -214,9 +214,9 @@ return (
                       <td className="whitespace-nowrap px-4 py-2">
                         <button
                           onClick={() => handleOpenViewModal(attendance)}
-                          className="inline-block rounded bg-blue-600 px-4 py-2 text-xs font-medium text-white hover:bg-blue-700 ml-2"
+                          className="inline-block rounded bg-zinc-900 px-4 py-2 text-xs font-medium text-white hover:bg-blue-700 ml-2"
                         >
-                          Ver
+                          Detalhar
                         </button>
                       </td>
                     </tr>
