@@ -50,6 +50,8 @@ export default function Page() {
     bornDate: '',
     observation: '',
     bloodType: '',
+    address: '',
+    num: '',
   });
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedPatient, setSelectedPatient] = useState(null);
@@ -94,7 +96,7 @@ export default function Page() {
     fetchPatients();
   }, []);
 
-  const handleOpenModal = (patient = null) => {
+    const handleOpenModal = (patient = null) => {
     if (patient) {
       setFormData(patient);
       setIsEditMode(true);
@@ -107,12 +109,13 @@ export default function Page() {
         bornDate: '',
         observation: '',
         bloodType: '',
+        address: '',
+        num: '',
       });
       setIsEditMode(false);
     }
     setIsModalOpen(true);
   };
-
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
@@ -154,18 +157,18 @@ export default function Page() {
     }
   };
 
-  const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
     e.preventDefault();
     const token = Cookies.get('token');
     if (!token) {
       toast.error('Token não encontrado. Faça login novamente.');
       return;
     }
-
+  
     try {
       const method = isEditMode ? 'PUT' : 'POST';
       const url = isEditMode ? `http://localhost:8080/patients/${formData.id}` : 'http://localhost:8080/patients';
-
+  
       const response = await fetch(url, {
         method,
         headers: {
@@ -174,7 +177,7 @@ export default function Page() {
         },
         body: JSON.stringify(formData),
       });
-
+  
       if (response.ok) {
         toast.success(`Paciente ${isEditMode ? 'atualizado' : 'adicionado'} com sucesso!`);
         await fetchPatients(); 
@@ -290,6 +293,14 @@ export default function Page() {
                         <option value="O+">O+</option>
                         <option value="O-">O-</option>
                       </select>
+                    </div>
+                                        <div>
+                      <label htmlFor="address" className="block mb-2 text-sm font-medium text-zinc-900 dark:text-white">Endereço</label>
+                      <input type="text" name="address" id="address" value={formData.address} onChange={handleChange} className="bg-zinc-50 border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Endereço do paciente" required />
+                    </div>
+                    <div>
+                      <label htmlFor="num" className="block mb-2 text-sm font-medium text-zinc-900 dark:text-white">Número</label>
+                      <input type="text" name="num" id="num" value={formData.num} onChange={handleChange} className="bg-zinc-50 border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Número do endereço" required />
                     </div>
                     <div className="sm:col-span-2">
                       <label htmlFor="observation" className="block mb-2 text-sm font-medium text-zinc-900 dark:text-white">Observações</label>
