@@ -9,6 +9,39 @@ export default function Page() {
   const [patients, setPatients] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      const token = Cookies.get('token');
+      if (!token) {
+        toast.error('Token não encontrado. Faça login novamente.');
+        window.location.href = '/login';
+        return;
+      }
+
+      try {
+        const response = await fetch('http://localhost:8080/users/userDetail', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setUser(data);
+        } else {
+          toast.error('Erro ao buscar detalhes do usuário. Verifique os dados e tente novamente.');
+        }
+      } catch (error) {
+        toast.error('Erro ao buscar detalhes do usuário. Verifique os dados e tente novamente.');
+      } 
+    };
+
+    fetchUserDetails();
+  }, []);
   const [formData, setFormData] = useState({
     name: '',
     cpf: '',
@@ -157,7 +190,7 @@ export default function Page() {
 
   return (
     <div className="">
-      <DashboardLayout pageName="Pacientes">
+      <DashboardLayout pageName="Pacientes" user={user}>
         <div className="flex justify-end m-5">
           <button
             onClick={() => handleOpenModal()}
