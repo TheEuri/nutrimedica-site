@@ -143,7 +143,7 @@ export default function Page() {
 
       if (response.ok) {
         toast.success('Paciente deletado com sucesso!');
-        await fetchPatients(); // Atualiza a lista de pacientes
+        await fetchPatients(); 
         handleCloseDeleteModal();
       } else {
         toast.error('Erro ao deletar paciente. Verifique os dados e tente novamente.');
@@ -177,7 +177,7 @@ export default function Page() {
 
       if (response.ok) {
         toast.success(`Paciente ${isEditMode ? 'atualizado' : 'adicionado'} com sucesso!`);
-        await fetchPatients(); // Atualiza a lista de pacientes
+        await fetchPatients(); 
         handleCloseModal();
       } else {
         toast.error(`Erro ao ${isEditMode ? 'atualizar' : 'adicionar'} paciente. Verifique os dados e tente novamente.`);

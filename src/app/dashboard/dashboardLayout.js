@@ -74,7 +74,7 @@ export default function DashboardLayout({ children, pageName, user }) {
                   <BellIcon aria-hidden="true" className="size-6" />
                 </button>
 
-                {/* Profile dropdown */}
+
                 <Menu as="div" className="relative ml-3">
                   <div>
                     <Menu.Button className="relative flex max-w-xs items-center rounded-full bg-black text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-zinc-800">
@@ -109,7 +109,7 @@ export default function DashboardLayout({ children, pageName, user }) {
               </div>
             </div>
             <div className="-mr-2 flex md:hidden">
-              {/* Mobile menu button */}
+
               <Disclosure.Button className="group relative inline-flex items-center justify-center rounded-md bg-black p-2 text-zinc-400 hover:bg-zinc-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-zinc-800">
                 <span className="absolute -inset-0.5" />
                 <span className="sr-only">Open main menu</span>

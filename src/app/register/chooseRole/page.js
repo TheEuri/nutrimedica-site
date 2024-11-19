@@ -15,11 +15,11 @@ export default function ChooseRole() {
 
   const handleRoleChange = (event) => {
     setSelectedRole(event.target.value);
-    setShift(''); // Reset shift when changing role
-    setCertifyingEntity(''); // Reset certifying entity when changing role
-    setState(''); // Reset state when changing role
-    setCertificateNumber(''); // Reset certificate number when changing role
-    setSpecialty(''); // Reset specialty when changing role
+    setShift(''); 
+    setCertifyingEntity(''); 
+    setState(''); 
+    setCertificateNumber(''); 
+    setSpecialty(''); 
   };
 
   const handleShiftChange = (event) => {
@@ -63,7 +63,6 @@ export default function ChooseRole() {
         if (response.ok) {
           toast.success('Registro de médico realizado com sucesso!');
 
-          // Segundo request para registrar a especialidade
           const specialtyData = {
             name: specialty,
           };

@@ -55,7 +55,6 @@ export default function Places() {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState(null);
 
-  // Linha 14
   const [agendaEvents, setAgendaEvents] = useState([]);
   const [isAgendaEventModalOpen, setIsAgendaEventModalOpen] = useState(false);
   const [isAgendaEventEditMode, setIsAgendaEventEditMode] = useState(false);
@@ -69,7 +68,7 @@ export default function Places() {
   const [isAgendaEventDeleteModalOpen, setIsAgendaEventDeleteModalOpen] = useState(false);
   const [selectedAgendaEvent, setSelectedAgendaEvent] = useState(null);
 
-  // Linha 28
+  
   const handleOpenAgendaEventModal = (event = null) => {
     if (event) {
       setAgendaEventFormData(event);
@@ -112,7 +111,7 @@ export default function Places() {
     setSelectedPlace(null);
   };
 
-  // Linha 50
+  
   const fetchAgendaEvents = async () => {
     const token = Cookies.get('token');
     if (!token) {
@@ -197,7 +196,7 @@ export default function Places() {
     setIsModalOpen(false);
   };
 
-  // Linha 100
+  
   const handleDeleteAgendaEvent = async () => {
     const token = Cookies.get('token');
     if (!token) {
@@ -216,7 +215,7 @@ export default function Places() {
 
       if (response.ok) {
         toast.success('Tipo de agendamento deletado com sucesso!');
-        await fetchAgendaEvents(); // Atualiza a lista de tipos de agendamentos
+        await fetchAgendaEvents(); 
         handleCloseAgendaEventDeleteModal();
       } else {
         toast.error('Erro ao deletar tipo de agendamento. Verifique os dados e tente novamente.');
@@ -253,7 +252,7 @@ export default function Places() {
 
       if (response.ok) {
         toast.success('Local deletado com sucesso!');
-        await fetchPlaces(); // Atualiza a lista de locais
+        await fetchPlaces(); 
         handleCloseDeleteModal();
       } else {
         toast.error('Erro ao deletar local. Verifique os dados e tente novamente.');
@@ -264,7 +263,7 @@ export default function Places() {
     }
   };
 
-  // Linha 150
+
   const handleAgendaEventSubmit = async (e) => {
     e.preventDefault();
     const token = Cookies.get('token');
@@ -288,7 +287,7 @@ export default function Places() {
 
       if (response.ok) {
         toast.success(`Tipo de agendamento ${isAgendaEventEditMode ? 'atualizado' : 'adicionado'} com sucesso!`);
-        await fetchAgendaEvents(); // Atualiza a lista de tipos de agendamentos
+        await fetchAgendaEvents(); 
         handleCloseAgendaEventModal();
       } else {
         toast.error(`Erro ao ${isAgendaEventEditMode ? 'atualizar' : 'adicionar'} tipo de agendamento. Verifique os dados e tente novamente.`);
@@ -299,7 +298,7 @@ export default function Places() {
     }
   };
 
-  // Linha 200
+ 
   const handleAgendaEventChange = (e) => {
     const { name, value } = e.target;
     setAgendaEventFormData((prevData) => ({
@@ -333,7 +332,7 @@ export default function Places() {
 
       if (response.ok) {
         toast.success(`Local ${isEditMode ? 'atualizado' : 'adicionado'} com sucesso!`);
-        await fetchPlaces(); // Atualiza a lista de locais
+        await fetchPlaces(); 
         handleCloseModal();
       } else {
         toast.error(`Erro ao ${isEditMode ? 'atualizar' : 'adicionar'} local. Verifique os dados e tente novamente.`);

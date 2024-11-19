@@ -17,7 +17,7 @@ export default function Register() {
     event.preventDefault();
 
     try {
-      // Registro
+      
       const registerResponse = await fetch('http://localhost:8080/users/register', {
         method: 'POST',
         headers: {
@@ -37,7 +37,7 @@ export default function Register() {
       if (registerData === "User created successfully!") {
         toast.success('Registro realizado com sucesso!');
 
-        // Login
+        
         const loginResponse = await fetch('http://localhost:8080/users/login', {
           method: 'POST',
           headers: {

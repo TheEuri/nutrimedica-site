@@ -132,8 +132,8 @@ export default function DoctorDashboard({ user }) {
   
       if (response.ok) {
         toast.success('Atendimento finalizado com sucesso!');
-        await fetchAttendances(); // Atualiza a lista de atendimentos
-        handleCloseViewModal(); // Fecha o modal automaticamente
+        await fetchAttendances(); 
+        handleCloseViewModal(); 
       } else {
         toast.error('Erro ao finalizar atendimento. Verifique os dados e tente novamente.');
       }

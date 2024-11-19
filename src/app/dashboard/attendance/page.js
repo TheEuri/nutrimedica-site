@@ -201,7 +201,7 @@ const handleAttendanceSubmit = async (e) => {
   try {
     let updatedFormData = { ...attendanceFormData };
 
-    // Adiciona um dia às datas
+    
     updatedFormData = {
       ...attendanceFormData,
       startDate: format(addDays(parseISO(attendanceFormData.startDate), 1), 'yyyy-MM-dd'),
@@ -222,7 +222,7 @@ const handleAttendanceSubmit = async (e) => {
 
     if (response.ok) {
       toast.success(`Atendimento ${isAttendanceEditMode ? 'atualizado' : 'adicionado'} com sucesso!`);
-      await fetchAttendances(); // Atualiza a lista de atendimentos
+      await fetchAttendances(); 
       handleCloseAttendanceModal();
     } else {
       toast.error(`Erro ao ${isAttendanceEditMode ? 'atualizar' : 'adicionar'} atendimento. Verifique os dados e tente novamente.`);
@@ -250,7 +250,7 @@ const handleDeleteAttendance = async () => {
 
     if (response.ok) {
       toast.success('Atendimento deletado com sucesso!');
-      await fetchAttendances(); // Atualiza a lista de atendimentos
+      await fetchAttendances();
       handleCloseAttendanceDeleteModal();
     } else {
       toast.error('Erro ao deletar atendimento. Verifique os dados e tente novamente.');

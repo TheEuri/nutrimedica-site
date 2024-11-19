@@ -22,13 +22,13 @@ export async function middleware(request) {
       return NextResponse.next();
     } else {
       const response = NextResponse.redirect(new URL('/', request.url));
-      response.cookies.set('token', '', { expires: new Date(0) }); // Apaga o cookie
+      response.cookies.set('token', '', { expires: new Date(0) }); 
       return response;
     }
   } catch (error) {
     console.log(error);
     const response = NextResponse.redirect(new URL('/', request.url));
-    response.cookies.set('token', '', { expires: new Date(0) }); // Apaga o cookie
+    response.cookies.set('token', '', { expires: new Date(0) });
     return response;
   }
 }
